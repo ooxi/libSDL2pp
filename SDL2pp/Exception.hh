@@ -33,9 +33,9 @@ private:
 
 public:
 	Exception(const char* what = "");
-	virtual ~Exception() noexcept;
-	const char* what() const noexcept;
-	const char* GetSDLError() const noexcept;
+	virtual ~Exception() NOEXCEPT;
+	const char* what() const NOEXCEPT;
+	const char* GetSDLError() const NOEXCEPT;
 };
 
 }

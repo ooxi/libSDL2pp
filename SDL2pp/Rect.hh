@@ -44,10 +44,15 @@ public:
 
 	static Rect FromCenter(int cx, int cy, int w, int h);
 
-	Rect(const Rect&) noexcept = default;
-	Rect(Rect&&) noexcept = default;
-	Rect& operator=(const Rect&) noexcept = default;
-	Rect& operator=(Rect&&) noexcept = default;
+	Rect(const Rect&) NOEXCEPT = default;
+	Rect& operator=(const Rect&) NOEXCEPT = default;
+#ifndef _MSC_VER
+	Rect(Rect&&) NOEXCEPT = default;
+	Rect& operator=(Rect&&) NOEXCEPT = default;
+#else
+	Rect(Rect&& orig) NOEXCEPT : rect_(orig.rect_), valid_(orig.valid_) {}
+	Rect& operator=(Rect&& orig) NOEXCEPT { rect_ = orig.rect_; valid_ = orig.valid_; }
+#endif
 
 	bool operator==(const Rect& other) const;
 	bool operator!=(const Rect& other) const;

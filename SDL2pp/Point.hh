@@ -40,10 +40,15 @@ public:
 
 	static Point Null();
 
-	Point(const Point&) noexcept = default;
-	Point(Point&&) noexcept = default;
-	Point& operator=(const Point&) noexcept = default;
-	Point& operator=(Point&&) noexcept = default;
+	Point(const Point&) NOEXCEPT = default;
+	Point& operator=(const Point&) NOEXCEPT = default;
+#ifndef _MSC_VER
+	Point(Point&&) NOEXCEPT = default;
+	Point& operator=(Point&&) NOEXCEPT = default;
+#else
+	Point(Point&& orig) NOEXCEPT : point_(orig.point_), valid_(orig.valid_) { }
+	Point& operator=(Point&& orig) NOEXCEPT { point_ = orig.point_; valid_ = orig.valid_; }
+#endif
 
 	bool operator==(const Point& other) const;
 	bool operator!=(const Point& other) const;

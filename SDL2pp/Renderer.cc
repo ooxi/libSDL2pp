@@ -42,11 +42,11 @@ Renderer::~Renderer() {
 		SDL_DestroyRenderer(renderer_);
 }
 
-Renderer::Renderer(Renderer&& other) noexcept : renderer_(other.renderer_) {
+Renderer::Renderer(Renderer&& other) NOEXCEPT : renderer_(other.renderer_) {
 	other.renderer_ = nullptr;
 }
 
-Renderer& Renderer::operator=(Renderer&& other) noexcept {
+Renderer& Renderer::operator=(Renderer&& other) NOEXCEPT {
 	renderer_ = other.renderer_;
 	other.renderer_ = nullptr;
 	return *this;

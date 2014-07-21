@@ -41,9 +41,9 @@ public:
 	virtual ~Window();
 
 	Window(const Window& other) = delete;
-	Window(Window&& other) noexcept;
+	Window(Window&& other) NOEXCEPT;
 	Window& operator=(const Window& other) = delete;
-	Window& operator=(Window&& other) noexcept;
+	Window& operator=(Window&& other) NOEXCEPT;
 
 	Point GetSize() const;
 	int GetWidth() const;

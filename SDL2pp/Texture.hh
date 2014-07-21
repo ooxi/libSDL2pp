@@ -41,9 +41,9 @@ public:
 	virtual ~Texture();
 
 	Texture(const Texture& other) = delete;
-	Texture(Texture&& other) noexcept;
+	Texture(Texture&& other) NOEXCEPT;
 	Texture& operator=(const Texture& other) = delete;
-	Texture& operator=(Texture&& other) noexcept;
+	Texture& operator=(Texture&& other) NOEXCEPT;
 
 	SDL_Texture* Get() const;
 
